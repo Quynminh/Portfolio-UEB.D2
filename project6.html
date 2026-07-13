@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết Bài Tập 6 - Sử Dụng AI Có Trách Nhiệm Trong Học Thuật</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-cream: #FAF6F0;
+            --box-espresso: #F3ECE2;
+            --amber-glow: #E27D60;
+            --teal-deep: #4A8F96;
+            --strawberry: #E25B5B;
+            --text-dark: #2C2523;
+            --text-muted: #6E605D;
+            --white: #FFFFFF;
+            --transition-smooth: all 0.3s ease;
+            --green-tint: #27ae60;
+            --red-tint: #c0392b;
+            --gray-tint: #7f8c8d;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            padding: 50px 20px;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--teal-deep);
+            font-weight: 600;
+            margin-bottom: 30px;
+            transition: var(--transition-smooth);
+        }
+
+        .back-link:hover { transform: translateX(-5px); opacity: 0.8; }
+
+        .header-section {
+            margin-bottom: 40px;
+            border-bottom: 2px dashed rgba(110, 96, 93, 0.15);
+            padding-bottom: 25px;
+        }
+
+        .header-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+
+        .header-section p { color: var(--text-muted); font-size: 1.05rem; }
+
+        .content-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(44, 37, 35, 0.02);
+            border: 1px solid rgba(110, 96, 93, 0.06);
+            margin-bottom: 35px;
+        }
+
+        .section-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-left: 5px solid var(--teal-deep);
+            padding-left: 15px;
+        }
+
+        .meta-box {
+            background: var(--bg-cream);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px dashed rgba(110, 96, 93, 0.2);
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        /* POLICY & ETHICS GRIDS */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        @media (max-width: 850px) { .grid-3 { grid-template-columns: 1fr; } }
+
+        .policy-card {
+            background: var(--box-espresso);
+            padding: 22px;
+            border-radius: 14px;
+            border: 1px solid rgba(110, 96, 93, 0.08);
+            display: flex;
+            flex-direction: column;
+        }
+        .policy-card h4 {
+            color: var(--amber-glow);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* PROMPT DISPLAY BLOCKS */
+        .prompt-quote {
+            background: #2E2528;
+            color: #F4EAE1;
+            padding: 18px 22px;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 0.92rem;
+            margin: 15px 0;
+            border-left: 4px solid var(--teal-deep);
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+
+        /* FINANCIAL TABLE STYLES */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin: 25px 0;
+            border-radius: 12px;
+            border: 1px solid rgba(110, 96, 93, 0.12);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            text-align: left;
+            background: var(--white);
+        }
+
+        .data-table th {
+            background: var(--teal-deep);
+            color: var(--white);
+            padding: 14px 16px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .data-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(110, 96, 93, 0.08);
+            color: var(--text-dark);
+            vertical-align: top;
+        }
+
+        .data-table tr:nth-child(even) { background-color: #fdfbf7; }
+        .data-table tr:hover { background-color: #f5f0e8; }
+
+        .ratio-title { font-weight: 700; color: var(--text-dark); display: block; }
+        .ratio-sub { font-size: 0.78rem; color: var(--text-muted); font-style: italic; }
+
+        /* DIRECTION BADGES */
+        .badge-dir {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+        .dir-up { background-color: var(--green-tint); }
+        .dir-down { background-color: var(--red-tint); }
+        .dir-neutral { background-color: var(--gray-tint); }
+
+        /* PRINCIPLES LIST */
+        .principle-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .principle-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            background: var(--bg-cream);
+            padding: 18px 20px;
+            border-radius: 12px;
+            border: 1px dashed rgba(110, 96, 93, 0.2);
+        }
+        .principle-num {
+            background: var(--strawberry);
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+
+        /* TRANSPARENCY BOX */
+        .transparency-box {
+            background: rgba(74, 143, 150, 0.08);
+            border-left: 4px solid var(--teal-deep);
+            padding: 18px 22px;
+            border-radius: 0 10px 10px 0;
+            margin-top: 25px;
+        }
+        .transparency-box h4 { color: var(--teal-deep); margin-bottom: 6px; font-size: 1rem; }
+
+        /* INFOGRAPHIC SHOWCASE */
+        .image-box {
+            background: var(--box-espresso);
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(110, 96, 93, 0.1);
+            margin-top: 20px;
+        }
+        .image-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto 12px auto;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        .image-box span { font-size: 0.9rem; color: var(--text-muted); font-weight: 600; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- NÚT QUAY LẠI TRANG CHỦ -->
+        <a href="index.html#du-an" class="back-link">← Quay lại trang chủ Portfolio</a>
+
+        <div class="header-section">
+            <span style="color: var(--amber-glow); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;">Bài tập thành phần số 6</span>
+            <h1>Báo Cáo Nghiên Cứu: Sử Dụng AI Có Trách Nhiệm Trong Học Thuật</h1>
+            <p>Xây dựng khung đạo đức, quy tắc ứng xử và thực nghiệm ứng dụng Trí tuệ Nhân tạo trong nghiên cứu Kế toán - Tài chính.</p>
+        </div>
+
+        <!-- PHẦN 1: NGHIÊN CỨU CHÍNH SÁCH -->
+        <div class="content-card">
+            <h2 class="section-subtitle">1. Nghiên cứu chính sách sử dụng AI của các trường Đại học tại Việt Nam</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Hiện nay, các cơ sở giáo dục đại học lớn tại Việt Nam (như Đại học Quốc gia Hà Nội, Đại học Bách khoa Hà Nội) đã tiên phong ban hành các văn bản hướng dẫn chính thức về việc tích hợp Trí tuệ nhân tạo (AI) vào hoạt động học tập và giảng dạy. Khung chính sách chung được xác lập dựa trên 3 trụ cột cơ bản:</p>
+            
+            <div class="grid-3">
+                <div class="policy-card">
+                    <h4>🟢 Cho phép có điều kiện</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); flex-grow: 1;">AI được công nhận là một công cụ hỗ trợ đắc lực trong việc tìm kiếm ý tưởng ban đầu, sửa lỗi ngữ pháp, dịch thuật ngôn ngữ hoặc gợi ý cấu trúc bài viết, giúp nâng cao hiệu suất nghiên cứu.</p>
+                </div>
+                <div class="policy-card">
+                    <h4>🔴 Nghiêm cấm thay thế tư duy</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); flex-grow: 1;">Hành vi sao chép nguyên văn (copy-paste) câu trả lời của AI vào bài tập cá nhân hoặc luận văn mà không qua xử lý bị khép vào hành vi <b>gian lận học thuật</b>, tương đương với việc nhờ người khác viết hộ bài.</p>
+                </div>
+                <div class="policy-card">
+                    <h4>🔵 Bắt buộc minh bạch hóa</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); flex-grow: 1;">Sinh viên khi sử dụng AI trong bất kỳ công đoạn nào (kể cả chỉ dùng để tìm kiếm tài liệu tham khảo) đều phải khai báo bằng một đoạn tuyên bố ở cuối bài, nêu rõ công cụ và phạm vi áp dụng.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PHẦN 2: THỰC NGHIỆM CHI TIẾT -->
+        <div class="content-card">
+            <h2 class="section-subtitle">2. Thực nghiệm nhiệm vụ học tập với sự hỗ trợ của AI</h2>
+            <div class="meta-box">
+                <p><b>• Nhiệm vụ nghiên cứu:</b> Lập bảng thống kê mức độ ảnh hưởng của các thủ thuật kế toán đến các chỉ số tài chính cơ bản: ROA, ROE, Current Ratio, Quick Ratio, Debt Ratio, Inventory Turnover và Average Collection Period.</p>
+                <p><b>• Mô hình AI thử nghiệm:</b> Google Gemini.</p>
+            </div>
+
+            <h3 style="font-size: 1.1rem; color: var(--teal-deep); margin-top: 20px;">✍️ Câu lệnh (Prompt) ban đầu đã sử dụng:</h3>
+            <div class="prompt-quote">"Tôi muốn lập một bảng nêu sự ảnh hưởng của các thủ thuật kế toán ghi nhận doanh thu sớm, không ghi nhận một số khoản nợ ngắn hạn và vốn hóa một số chi phí ảnh hưởng như thế nào đến các chỉ số tài chính ROA, ROE, Current Ratio, Quick Ratio, Debt Ratio, Inventory Turnover, Average Collection Period; nêu rõ chỉ số nào tăng giảm và mức độ."</div>
+
+            <h3 style="font-size: 1.1rem; color: var(--teal-deep); margin-top: 25px;">📊 Bảng phân tích đầu ra được AI tổng hợp và người học chuẩn hóa:</h3>
+            
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">Chỉ số tài chính</th>
+                            <th style="width: 26%;">1. Ghi nhận doanh thu sớm</th>
+                            <th style="width: 27%;">2. Không ghi nhận nợ ngắn hạn</th>
+                            <th style="width: 27%;">3. Vốn hóa chi phí (Thay vì tính chi phí kỳ này)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- ROA -->
+                        <tr>
+                            <td>
+                                <span class="ratio-title">ROA</span>
+                                <span class="ratio-sub">Tỷ suất sinh lời trên tổng tài sản</span>
+                            </td>
+                            <td>
+                                <span class="badge-dir dir-up">TĂNG (Vừa)</span><br>
+                                Lợi nhuận ròng tăng nhanh hơn sự gia tăng của Phải thu khách hàng (Tài sản).
+                            </td>
+                            <td>
+                                <span class="badge-dir dir-up">TĂNG (Vừa)</span><br>
+                                Lợi nhuận không đổi nhưng Tổng tài sản bị giảm ảo do thiếu hụt nguồn tài trợ tương ứng.
+                            </td>
+                            <td>
+                                <span class="badge-dir dir-up">TĂNG (Mạnh)</span><br>
+                                Lợi nhuận ròng tăng mạnh (do giảm chi phí) kết hợp Tổng tài sản tăng, nhưng tử số tăng mạnh hơn.
+                            </td>
+                        </tr>
+                        <!-- ROE -->
+                        <tr>
+                            <td>
+                                <span class="ratio-title">ROE</span>
+                                <span class="ratio-sub">Tỷ suất sinh lời trên vốn CSH</span>
+                            </td>
+                            <td>
+                                <span class="badge-dir dir-up">TĂNG (Mạnh)</span><br>
+                                Lợi nhuận ròng (tử số) tăng trực tiếp kéo ROE tăng cao mà chưa cần tăng vốn góp.
+                            </td>
+                            <td>
+                                <span class="badge-dir dir-up">TĂNG (Vừa)</span><br>
+                                Lợi nhuận không đổi nhưng Vốn chủ sở hữu bị đánh giá cao hơn thực tế một chút do tích lũy.
+                            </td>
+                            <td>
+                                <span class="badge-dir dir-up">TĂNG (Mạnh)</span><br>
+                                Lợi nhuận ròng tăng vọt do chi phí "biến mất" khỏi báo cáo kết quả kinh doanh.
+                            </td>
+                        </tr>
+                        <!-- Current Ratio -->
+                        <tr>
+                            <td>
+                                <span class="ratio-title">Current Ratio</span>
+                                <span class="ratio-sub">Hệ số thanh toán hiện hành</span>
+                            </td>
+                            <td>
+                                <span class="badge-dir dir-up">TĂNG (Mạnh)</span><br>
+                                Tài sản ngắn hạn tăng do phát sinh khoản Phải thu khách hàng (khống), trong khi Nợ ngắn hạn giữ nguyên.
+                            </td>
+                            <td>
+                                <span class="badge-dir dir-up">TĂNG (Mạnh)</span><br>
+                                Mẫu số (Nợ ngắn hạn) giảm trực tiếp, làm cho hệ số này trông "đẹp và an toàn" hơn rất nhiều.
+                            </td>
+                            <td>
+                                <span class="badge-dir dir-up" style="background-color: #2ecc71;">KHÔNG ĐỔI hoặc TĂNG (Yếu)</span><br>
+                                Nếu chi phí được vốn hóa thành tài sản dài hạn thì không ảnh hưởng đến Tài sản ngắn hạn.
+                            </td>
+                        </tr>
+                        <!-- Quick Ratio -->
+                        <tr>
+                            <td>
+                                <span class="ratio-title">Quick Ratio</span>
+                                <span class="ratio-sub">Hệ số thanh toán nhanh</span>
+                            </td>
+                            <td>
+                                <span class="badge-dir dir-up">TĂNG (Mạnh)</span><br>
+                                Do khoản Phải thu khách hàng thuộc nhóm tài sản thanh toán nhanh, làm tử số tăng trực tiếp.
+                            </td>
+                            <td>
+                                <span class="badge-dir dir-up">TĂNG (Mạnh)</span><br>
+                                Tương tự Current Ratio, việc "giấu" mẫu số (Nợ ngắn hạn) đẩy chỉ số này lên cao.
+                            </td>
+                            <td>
+                                <span class="badge-dir dir-neutral">KHÔNG ĐỔI (Yếu)</span><br>
+                                Không tác động trực tiếp đến các cấu phần của tài sản thanh toán nhanh.
+                            </td>
+                        </tr>
+                        <!-- Debt Ratio -->
+                        <tr>
+                            <td>
+                                <span class="ratio-title">Debt Ratio</span>
+                                <span class="ratio-sub">Hệ số nợ trên tổng tài sản</span>
+                            </td>
+                            <td>
+                                <span class="badge-dir dir-down">GIẢM (Vừa)</span><br>
+                                Tổng tài sản tăng lên (do tăng Phải thu), làm loãng tỷ lệ nợ hiện tại trên tổng nguồn vốn.
+                            </td>
+                            <td>
+                                <span class="badge-dir dir-down">GIẢM (Mạnh)</span><br>
+                                Nợ bị ẩn đi trực tiếp làm tử số giảm nghiêm trọng, che giấu rủi ro đòn bẩy tài chính.
+                            </td>
+                            <td>
+                                <span class="badge-dir dir-down">GIẢM (Vừa)</span><br>
+                                Tổng tài sản tăng lên (do vốn hóa chi phí thành tài sản cố định/dài hạn) làm mẫu số tăng.
+                            </td>
+                        </tr>
+                        <!-- Inventory Turnover -->
+                        <tr>
+                            <td>
+                                <span class="ratio-title">Inventory Turnover</span>
+                                <span class="ratio-sub">Vòng quay hàng tồn kho</span>
+                            </td>
+                            <td>
+                                <span class="badge-dir dir-up">TĂNG (Vừa)</span><br>
+                                Doanh thu/Giá vốn tăng ảo khiến hàng tồn kho có cảm giác được giải phóng nhanh hơn thực tế.
+                            </td>
+                            <td>
+                                <span class="badge-dir dir-neutral">KHÔNG ĐỔI</span><br>
+                                Thủ thuật này không chạm vào tài khoản hàng tồn kho hay giá vốn hàng bán.
+                            </td>
+                            <td>
+                                <span class="badge-dir dir-neutral" style="background-color: #d35400;">TĂNG hoặc GIẢM (Vừa)</span><br>
+                                Tùy thuộc vào việc chi phí bị hoãn lại đó có liên quan đến chi phí sản xuất cấu thành giá vốn hay không.
+                            </td>
+                        </tr>
+                        <!-- Average Collection Period -->
+                        <tr>
+                            <td>
+                                <span class="ratio-title">Average Collection Period</span>
+                                <span class="ratio-sub">Kỳ thu tiền bình quân</span>
+                            </td>
+                            <td>
+                                <span class="badge-dir dir-up" style="background-color: #c0392b;">TĂNG (Mạnh)</span><br>
+                                Chỉ số bị xấu đi (tăng ngày). Phải thu khách hàng tăng vọt nhưng tiền thực tế không về, kéo dài ngày thu tiền ảo.
+                            </td>
+                            <td>
+                                <span class="badge-dir dir-neutral">KHÔNG ĐỔI</span><br>
+                                Không ảnh hưởng đến doanh thu hay các khoản phải thu.
+                            </td>
+                            <td>
+                                <span class="badge-dir dir-neutral">KHÔNG ĐỔI</span><br>
+                                Không tác động đến các tài khoản liên quan đến chu kỳ phải thu.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- ĐÁNH GIÁ & CẢI TIẾN -->
+            <h3 style="font-size: 1.1rem; color: var(--teal-deep); margin-top: 25px;">🔍 Đánh giá và Cải tiến câu lệnh:</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 8px;"><b>• Nhận xét kết quả ban đầu:</b> AI đáp ứng rất tốt yêu cầu định hướng chỉ số nào tăng, giảm và định lượng mức độ. Tuy nhiên, phần giải thích cơ chế tác động còn sơ sài, chưa chỉ ra gốc rễ việc biến động các tài khoản kế toán cụ thể trên Bảng cân đối kế toán và Báo cáo kết quả hoạt động kinh doanh.</p>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 8px;"><b>• Biện pháp khắc phục (Iterative Prompting):</b> Sử dụng thêm câu lệnh nối tiếp: <i>“Hãy giải thích rõ tại sao lại tăng giảm chỉ số bằng cách chỉ ra sự thay đổi của tử số và mẫu số trong công thức tài chính tương ứng...”</i>. Sau đó, kết hợp với kiến thức nền tảng tài chính của bản thân để hiệu đính, loại bỏ sai sót và hoàn thiện bảng phân tích hợp lý nhất.</p>
+
+            <!-- TUYÊN BỐ MINH BẠCH -->
+            <div class="transparency-box">
+                <h4>🛡️ Trích dẫn việc sử dụng AI một cách minh bạch (AI Usage Declaration)</h4>
+                <p style="font-size: 0.9rem; color: var(--text-dark);"><i>"Bài báo cáo nghiên cứu này có sử dụng công cụ hỗ trợ Google Gemini trong giai đoạn động não, phân nhóm chỉ số và cấu trúc đề cương bảng biểu ban đầu. Toàn bộ nội dung chi tiết, phân tích bản chất tài chính, số liệu thực tế cùng việc thẩm định tính chính xác cuối cùng đều do người học tự nghiên cứu, biên soạn và chịu trách nhiệm hoàn toàn."</i></p>
+            </div>
+        </div>
+
+        <!-- PHẦN 3: PHÂN TÍCH ĐẠO ĐỨC -->
+        <div class="content-card">
+            <h2 class="section-subtitle">3. Phân tích các vấn đề đạo đức liên quan đến AI trong học thuật</h2>
+            
+            <div class="grid-3">
+                <div class="policy-card" style="border-top: 4px solid var(--amber-glow);">
+                    <h4 style="color: var(--text-dark);">⚖️ Ranh giới hỗ trợ & Gian lận</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Sử dụng AI hợp lý là xem AI như trợ lý giải thích các khái niệm khó hoặc kiểm tra lỗi logic. Ranh giới gian lận bị phá vỡ khi người học chép nguyên văn đề bài vào AI, đợi câu trả lời rồi paste trực tiếp đem nộp mà không có sự đóng góp trí tuệ cá nhân.</p>
+                </div>
+                <div class="policy-card" style="border-top: 4px solid var(--teal-deep);">
+                    <h4 style="color: var(--text-dark);">©️ Sở hữu trí tuệ & Trích dẫn</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">AI không phải là một pháp nhân hay tác giả; nó chỉ tổng hợp từ các tập dữ liệu khổng lồ có sẵn. Do đó, rủi ro "đạo văn gián tiếp" cực kỳ cao. Người nghiên cứu có trách nhiệm phải truy xuất và kiểm chứng nguồn gốc tài liệu gốc đối với các số liệu AI đưa ra.</p>
+                </div>
+                <div class="policy-card" style="border-top: 4px solid var(--strawberry);">
+                    <h4 style="color: var(--text-dark);">🧠 Nguy cơ thui chột tư duy</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Nếu lạm dụng AI như một "lối tắt" giải bài tập, bộ não người học sẽ rơi vào trạng thái ức chế, dần mất đi năng lực tư duy phản biện, tổng hợp và viết lách. Khi đối mặt với tình huống thực tế hoặc kỳ thi không có Internet, người học sẽ bị thụ động hoàn toàn.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PHẦN 4: NGUYÊN TẮC CÁ NHÂN -->
+        <div class="content-card">
+            <h2 class="section-subtitle">4. Tuyên ngôn 5 Nguyên tắc cá nhân về sử dụng AI có trách nhiệm</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Để cân bằng giữa việc tận dụng sức mạnh công nghệ số và bảo vệ liêm chính học thuật, tôi xác lập 5 nguyên tắc ứng xử kiên định trong quá trình học tập:</p>
+            
+            <div class="principle-list">
+                <div class="principle-item">
+                    <div class="principle-num">1</div>
+                    <div>
+                        <h4 style="color: var(--text-dark); font-size: 1.05rem; margin-bottom: 4px;">Luôn tự phác thảo ý tưởng trước tiên</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Luôn tự lập dàn ý và vận dụng tư duy cá nhân trước khi mở công cụ AI. AI chỉ được can thiệp vào giai đoạn mở rộng hoặc tinh chỉnh, không bao giờ là điểm khởi đầu thay thế não bộ.</p>
+                    </div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-num">2</div>
+                    <div>
+                        <h4 style="color: var(--text-dark); font-size: 1.05rem; margin-bottom: 4px;">"AI cung cấp nguyên liệu - Bản thân là Đầu bếp"</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Kiên quyết nói không với hành vi copy-paste nguyên văn. Dữ liệu từ AI chỉ là tài nguyên thô; người học phải tự xào nấu, hành văn lại theo ngôn ngữ, tư duy và văn phong học thuật của chính mình.</p>
+                    </div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-num">3</div>
+                    <div>
+                        <h4 style="color: var(--text-dark); font-size: 1.05rem; margin-bottom: 4px;">Duy trì sự nghi ngờ lành mạnh (Healthy Skepticism)</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Mặc định rằng AI có thể sai (hiện tượng ảo giác - Hallucination). Luôn có bước đối chiếu, kiểm chứng các số liệu tài chính và định lý pháp lý bằng sách giáo khoa hoặc báo cáo kiểm toán chính thức.</p>
+                    </div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-num">4</div>
+                    <div>
+                        <h4 style="color: var(--text-dark); font-size: 1.05rem; margin-bottom: 4px;">Minh bạch tuyệt đối trong khai báo</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Luôn đính kèm "Tuyên bố sử dụng AI" vào cuối mỗi bài luận, bài tập lớn hay nghiên cứu khoa học. Sự trung thực là chuẩn mực cao nhất của tự trọng học thuật.</p>
+                    </div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-num">5</div>
+                    <div>
+                        <h4 style="color: var(--text-dark); font-size: 1.05rem; margin-bottom: 4px;">Dùng AI như một Gia sư, không phải Người làm thuê</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Tập trung vào mục tiêu phát triển năng lực nội tại. Yêu cầu AI đặt câu hỏi phản biện cho bài làm của mình thay vì yêu cầu AI viết sẵn đáp án để nộp.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PHẦN 5: INFOGRAPHIC -->
+        <div class="content-card" style="border-top: 4px solid var(--teal-deep);">
+            <h2 class="section-subtitle">5. Infographic: Khung tư duy AI trong học thuật</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Trực quan hóa hành trình từ nhận thức đạo đức đến ứng dụng thực tế của sinh viên trong thời đại Trí tuệ Nhân tạo:</p>
+            
+            <div class="image-box">
+                <!-- Bạn chỉ cần thiết kế Infographic bằng Canva, lưu dưới tên image_6.1.png và để cùng thư mục web -->
+                <img src="image_6.1.png" alt="Infographic Sử Dụng AI Có Trách Nhiệm">
+                <span>[Infographic] 5 Nguyên tắc vàng & Khung đạo đức sử dụng AI trong nghiên cứu học thuật</span>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

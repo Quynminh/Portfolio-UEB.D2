@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết Bài Tập 4 - Công Cụ Hợp Tác Trực Tuyến</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-cream: #FAF6F0;
+            --box-espresso: #F3ECE2;
+            --amber-glow: #E27D60;
+            --teal-deep: #4A8F96;
+            --strawberry: #E25B5B;
+            --text-dark: #2C2523;
+            --text-muted: #6E605D;
+            --white: #FFFFFF;
+            --transition-smooth: all 0.3s ease;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            padding: 50px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--teal-deep);
+            font-weight: 600;
+            margin-bottom: 30px;
+            transition: var(--transition-smooth);
+        }
+
+        .back-link:hover { transform: translateX(-5px); opacity: 0.8; }
+
+        .header-section {
+            margin-bottom: 40px;
+            border-bottom: 2px dashed rgba(110, 96, 93, 0.15);
+            padding-bottom: 25px;
+        }
+
+        .header-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+
+        .header-section p { color: var(--text-muted); font-size: 1.05rem; }
+
+        .content-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(44, 37, 35, 0.02);
+            border: 1px solid rgba(110, 96, 93, 0.06);
+            margin-bottom: 35px;
+        }
+
+        .section-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-left: 5px solid var(--teal-deep);
+            padding-left: 15px;
+        }
+
+        .meta-box {
+            background: var(--bg-cream);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px dashed rgba(110, 96, 93, 0.2);
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        /* TOOLS GRID */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        @media (max-width: 768px) { .tools-grid { grid-template-columns: 1fr; } }
+
+        .tool-card {
+            background: var(--box-espresso);
+            padding: 20px;
+            border-radius: 14px;
+            border: 1px solid rgba(110, 96, 93, 0.08);
+        }
+
+        .tool-card h4 {
+            color: var(--teal-deep);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* DIARY / EVIDENCE BLOCKS */
+        .diary-block {
+            border-bottom: 1px solid rgba(110, 96, 93, 0.1);
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+        }
+        .diary-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+        .diary-title {
+            font-size: 1.25rem;
+            color: var(--amber-glow);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .diary-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        /* IMAGE DISPLAY WRAPPER */
+        .image-showcase {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 20px;
+            margin-top: 15px;
+        }
+        .image-showcase.double { grid-template-columns: repeat(2, 1fr); }
+        @media (max-width: 768px) { .image-showcase.double { grid-template-columns: 1fr; } }
+
+        .image-box {
+            background: var(--box-espresso);
+            padding: 15px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(110, 96, 93, 0.1);
+        }
+        .image-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+            margin-bottom: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .image-box span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .highlight-badge {
+            background: rgba(226, 91, 91, 0.1);
+            color: var(--strawberry);
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        ul { padding-left: 20px; color: var(--text-muted); }
+        li { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html#du-an" class="back-link">← Quay lại trang chủ Portfolio</a>
+
+        <div class="header-section">
+            <span style="color: var(--teal-deep); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;">Bài tập thành phần số 4</span>
+            <h1>Công Cụ Hợp Tác Trực Tuyến & Quản Lý Nhóm</h1>
+            <p>Báo cáo trải nghiệm và đóng góp cá nhân trong quá trình điều phối dự án nghiên cứu số.</p>
+        </div>
+
+        <div class="content-card">
+            <h2 class="section-subtitle">1. Giới thiệu Tổng quan Dự án</h2>
+            <div class="meta-box">
+                <p><b>• Người thực hiện:</b> Ngô Quỳnh Minh (MSSV: 25050673)</p>
+                <p><b>• Đề tài dự án:</b> Thương mại điện tử (E-commerce) và hành trình chinh phục người tiêu dùng số.</p>
+                <p><b>• Vai trò đảm nhận:</b> Trưởng nhóm nghiên cứu.</p>
+                <p><b>• Thời gian thực hiện:</b> 17/04/2026 - 03/05/2026.</p>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Báo cáo này tổng kết quá trình tham gia thực hiện dự án với vai trò là trưởng nhóm nghiên cứu. Trong suốt thời gian triển khai, tôi đã chủ động thiết lập và khai thác hiệu quả bộ công cụ cộng tác trực tuyến để tối ưu hóa hiệu suất làm việc cá nhân và sự phối hợp đồng bộ giữa các thành viên trong nhóm.</p>
+        </div>
+
+        <div class="content-card">
+            <h2 class="section-subtitle">2. Hệ sinh thái Công cụ Hợp tác đã sử dụng</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Để đảm bảo tiến độ và chất lượng công việc theo đúng deadline, tôi đã lựa chọn và phân bố quy trình làm việc qua 4 công cụ trọng tâm:</p>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h4>📊 Google Sheets (Quản lý dự án)</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Thiết lập bảng Checklist, lập kế hoạch chi tiết, phân chia đầu việc và theo dõi danh sách nhiệm vụ cá nhân/nhóm theo thời gian thực.</p>
+                </div>
+                <div class="tool-card">
+                    <h4>📝 Google Docs (Soạn thảo tài liệu)</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Nền tảng cộng tác viết báo cáo chung. Cho phép chỉnh sửa đồng thời, để lại nhận xét (comment) và theo dõi lịch sử phiên bản tài liệu.</p>
+                </div>
+                <div class="tool-card">
+                    <h4>📁 Google Drive (Lưu trữ & Chia sẻ)</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Xây dựng cấu trúc cây thư mục khoa học, lưu trữ tập trung tài liệu nguồn, hình ảnh minh chứng và các tài nguyên dùng chung của nhóm 08.</p>
+                </div>
+                <div class="tool-card">
+                    <h4>💬 Google Meets & Zalo (Giao tiếp nhóm)</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Đóng vai trò kênh thông tin chủ đạo. Họp thảo luận ý tưởng qua thoại/video (Voice Channel) và cập nhật tiến độ hằng ngày bằng tin nhắn văn bản.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2 class="section-subtitle">3. Nhật ký Minh chứng Hoạt động Cá nhân</h2>
+            
+            <div class="diary-block">
+                <span class="highlight-badge">Mục 3.1</span>
+                <div class="diary-title">Quản lý nhiệm vụ trên Google Sheets</div>
+                <p class="diary-desc">Tôi đã thiết lập bảng checklist cá nhân để chia nhỏ đầu việc thành các trạng thái rõ ràng: <b>To-Do (Cần làm)</b>, <b>In-Progress (Đang làm)</b>, và <b>Done (Hoàn thành)</b>. Phương pháp này giúp tôi kiểm soát deadline một cách chủ động và không bỏ sót nhiệm vụ với tư cách trưởng nhóm.</p>
+                
+                <div class="image-showcase">
+                    <div class="image-box">
+                        <img src="image_4.1.png" alt="Minh chứng Google Sheets checklist">
+                        <span>[Image 1] Bảng theo dõi và quản lý trạng thái công việc trên Google Sheets</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="diary-block">
+                <span class="highlight-badge">Mục 3.2</span>
+                <div class="diary-title">Đóng góp nội dung trên Google Docs</div>
+                <p class="diary-desc">Tôi đã đóng góp nội dung trực tiếp vào file báo cáo chung của nhóm. Các phần trọng tâm tôi chịu trách nhiệm biên soạn bao gồm: <i>Giới thiệu tổng quan về đề tài Thương mại điện tử (E-commerce)</i> và <i>Hành trình chinh phục người tiêu dùng số</i>. Hệ thống nhật ký của Google Docs ghi nhận chi tiết lịch sử chỉnh sửa tài liệu của tôi.</p>
+                
+                <div class="image-showcase double">
+                    <div class="image-box">
+                        <img src="image_4.2a.png" alt="Minh chứng soạn thảo Google Docs">
+                        <span>[Image 2] Nội dung đóng góp trực tiếp trên báo cáo chung</span>
+                    </div>
+                    <div class="image-box">
+                        <img src="image_4.2b.png" alt="Minh chứng lịch sử chỉnh sửa Docs">
+                        <span>[Image 3] Nhật ký ghi nhận phiên bản chỉnh sửa của cá nhân</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="diary-block">
+                <span class="highlight-badge">Mục 3.3</span>
+                <div class="diary-title">Tương tác và thảo luận trên Zalo & Google Meets</div>
+                <p class="diary-desc">Zalo và Google Meets đóng vai trò là mạch máu kết nối của nhóm. Tôi đã chủ động điều phối, tham gia các cuộc họp giọng nói (Voice Channel/Meets) để thống nhất hướng đi, đồng thời liên tục cập nhật báo cáo tiến độ hằng ngày trên các kênh văn bản (Text Channel) của Zalo nhóm.</p>
+                
+                <div class="image-showcase">
+                    <div class="image-box">
+                        <img src="image_4.3.png" alt="Minh chứng thảo luận nhóm Zalo/Meets">
+                        <span>[Image 4] Lịch sử trao đổi, cập nhật tiến độ và thảo luận trực tuyến</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="diary-block">
+                <span class="highlight-badge">Mục 3.4</span>
+                <div class="diary-title">Lưu trữ và tổ chức tệp tin trên Google Drive</div>
+                <p class="diary-desc">Để tránh nhầm lẫn tài liệu, tôi đã áp dụng quy tắc 5S vào lưu trữ đám mây, tạo cấu trúc thư mục khoa học cho các tệp cá nhân phụ trách trước khi đưa lên không gian làm việc chung của nhóm, bao gồm phân cụm thư mục:
+                <br>• <code>Source công nghệ số</code>
+                <br>• <code>[VNU1001_E252041] Nhập môn CNS&AI Nhóm 08</code></p>
+            </div>
+
+        </div>
+
+        <div class="content-card" style="border-top: 4px solid var(--amber-glow);">
+            <h2 class="section-subtitle">4. Tổng kết Trải nghiệm & Bài học rút ra</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 12px;">Thông qua quá trình triển khai dự án nhóm và quản lý tiến độ bằng các công cụ số trực tuyến, tôi đúc kết được những giá trị thực tiễn:</p>
+            <ul>
+                <li><b>Tối ưu hóa hiệu suất giao tiếp:</b> Việc tách bạch rõ ràng giữa kênh thảo luận nhanh (Zalo) và kênh tài liệu chính thống (Docs/Sheets) giúp nhóm tiết kiệm 50% thời gian họp hành vô bổ.</li>
+                <li><b>Tư duy làm việc minh bạch:</b> Tính năng theo dõi lịch sử phiên bản (Version History) và bảng trạng thái To-do list tạo ra sự công bằng, minh bạch trong việc đánh giá mức độ đóng góp của từng thành viên.</li>
+                <li><b>Nâng cao năng lực lãnh đạo số (Digital Leadership):</b> Trải nghiệm vai trò Trưởng nhóm giúp tôi hoàn thiện kỹ năng phân bổ nhân lực dựa trên thế mạnh, quản trị rủi ro deadline và duy trì động lực làm việc cho toàn đội trong môi trường từ xa.</li>
+            </ul>
+        </div>
+
+    </div>
+
+</body>
+</html>

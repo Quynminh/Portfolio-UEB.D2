@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <title>Portfolio Cá Nhân - Ngô Quỳnh Minh - MSV 25050673</title>
+    <meta name="description" content="Trang web portfolio học phần Nhập môn Công nghệ số và AI của sinh viên Ngô Quỳnh Minh">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Portfolio - Bản Mẫu Chỉnh Sửa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-cream: #FAF6F0;
+            --box-espresso: #F3ECE2;
+            --amber-glow: #E27D60;
+            --teal-deep: #4A8F96;
+            --strawberry: #E25B5B;
+            --text-dark: #2C2523;
+            --text-muted: #6E605D;
+            --white: #FFFFFF;
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* CUSTOM SCROLLBAR */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--bg-cream); }
+        ::-webkit-scrollbar-thumb { background: var(--box-espresso); border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+        /* NAVIGATION HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(250, 246, 240, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(110, 96, 93, 0.05);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-item a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav-item a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--teal-deep);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-item.active a { color: var(--teal-deep); font-weight: 600; }
+        .nav-item.active a::after { width: 100%; }
+        .nav-item a:hover { color: var(--teal-deep); }
+        .nav-item a:hover::after { width: 100%; }
+
+        /* CONTENT CONTAINERS & GLOBAL STYLES */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 90px 40px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 650px;
+            margin-bottom: 45px;
+            line-height: 1.6;
+        }
+
+        /* HERO SECTION (PAGE 1) */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            padding-top: 140px;
+            gap: 60px;
+        }
+
+        .hero-content { flex: 1.2; }
+        .hero-image-container { flex: 0.8; display: flex; justify-content: center; }
+
+        .hero-badge {
+            background: var(--box-espresso);
+            color: var(--text-muted);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 25px;
+            border: 1px solid rgba(110, 96, 93, 0.08);
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.6rem;
+            line-height: 1.15;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+        }
+
+        .hero-title span { color: var(--teal-deep); }
+        .hero-desc { color: var(--text-muted); font-size: 1.1rem; line-height: 1.65; margin-bottom: 40px; max-width: 540px; }
+
+        /* LOFI INSPIRED ART FRAME */
+        .lofi-art-frame {
+            background: var(--white);
+            border: 1px solid rgba(110, 96, 93, 0.12);
+            padding: 16px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(44, 37, 35, 0.04);
+            position: relative;
+        }
+
+        .lofi-art-frame::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            border: 1px solid var(--white);
+            pointer-events: none;
+        }
+
+        .lofi-art-frame img {
+            width: 100%;
+            border-radius: 12px;
+            display: block;
+        }
+
+        /* GRID SYSTEM FOR PORTFOLIO ITEMS (PAGE 3) */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 35px;
+            margin-top: 20px;
+        }
+
+        .exercise-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(44, 37, 35, 0.02);
+            border: 1px solid rgba(110, 96, 93, 0.05);
+            transition: var(--transition-smooth);
+        }
+
+        .exercise-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(74, 143, 150, 0.08);
+            border-color: rgba(74, 143, 150, 0.2);
+        }
+
+        .exercise-badge {
+            background: rgba(74, 143, 150, 0.1);
+            color: var(--teal-deep);
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .exercise-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 12px; }
+        .academic-meta {
+            background: var(--bg-cream);
+            border-left: 4px solid var(--amber-glow);
+            padding: 12px 15px;
+            border-radius: 0 10px 10px 0;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        /* MEDIA AREA FOR IMAGE UPLOADS */
+        .media-placeholder {
+            width: 100%;
+            height: 180px;
+            background: var(--box-espresso);
+            border-radius: 12px;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed rgba(110, 96, 93, 0.2);
+            padding: 15px;
+            text-align: center;
+        }
+
+        .media-placeholder p { font-size: 0.85rem; color: var(--text-muted); }
+        .media-placeholder img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; display: none; }
+
+        /* TABLES */
+        .craap-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 0.9rem; }
+        .craap-table th, .craap-table td { border: 1px solid rgba(110, 96, 93, 0.15); padding: 10px; text-align: left; }
+        .craap-table th { background: var(--teal-deep); color: var(--white); }
+
+        /* PROMPT DISPLAY */
+        .prompt-box {
+            background: #2E2528;
+            color: #F4EAE1;
+            padding: 15px;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            margin: 10px 0;
+            border-left: 4px solid var(--strawberry);
+            white-space: pre-wrap;
+        }
+
+        /* REFLECTION */
+        .reflection-container { background: var(--white); border-radius: 24px; padding: 40px; box-shadow: 0 10px 30px rgba(44, 37, 35, 0.01); }
+        .reflection-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-top: 30px; }
+        .reflection-card { background: var(--bg-cream); padding: 25px; border-radius: 16px; border-top: 4px solid var(--teal-deep); }
+        .reflection-card.heart { border-top-color: var(--strawberry); }
+        .reflection-card.star { border-top-color: var(--amber-glow); }
+
+        footer { background: var(--box-espresso); padding: 30px; text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-top: 60px; }
+
+        @media (max-width: 900px) {
+            .hero-section { flex-direction: column-reverse; text-align: center; padding-top: 120px; gap: 30px; }
+            .portfolio-grid, .reflection-grid { grid-template-columns: 1fr; }
+            .nav-menu { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#trang-chu" class="logo">PORTFOLIO.CÁNHÂN</a>
+            <ul class="nav-menu">
+                <li class="nav-item" id="nav-trang-chu"><a href="#trang-chu">Trang Chủ</a></li>
+                <li class="nav-item" id="nav-gioi-thieu"><a href="#gioi-thieu">Giới Thiệu</a></li>
+                <li class="nav-item" id="nav-du-an"><a href="#du-an">Dự Án</a></li>
+                <li class="nav-item" id="nav-tong-ket"><a href="#tong-ket">Tổng Kết</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div id="trang-chu">
+        <section class="hero-section">
+            <div class="hero-content">
+                <span class="hero-badge">✨ Học Phần: Nhập Môn Công Nghệ Số & AI</span>
+                <h1 class="hero-title">Chào bạn, mình là<br><span>Ngô Quỳnh Minh</span></h1>
+                <p class="hero-desc">Chào mừng bạn đến với Không gian số sáng tạo cá nhân – Nơi lưu trữ, kết nối các dự án công nghệ xuất sắc, tối ưu hóa quy trình làm việc học thuật dựa trên nền tảng Trí Tuệ Nhân Tạo hiện đại.</p>
+                
+                <div style="display: flex; gap: 20px;">
+                    <a href="#du-an" style="background: var(--teal-deep); color: var(--white); padding: 12px 28px; border-radius: 12px; text-decoration: none; font-weight: 600; box-shadow: 0 10px 20px rgba(74, 143, 150, 0.2);">Xem Các Dự Án</a>
+                    <a href="#gioi-thieu" style="background: var(--box-espresso); color: var(--text-dark); padding: 12px 28px; border-radius: 12px; text-decoration: none; font-weight: 600;">Tìm Hiểu Thêm</a>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <div class="hero-image-container" style="display: flex; justify-content: center; align-items: center; width: 100%;">
+                    <div class="lofi-art-frame" style="background: transparent; box-shadow: none; padding: 0; width: 400px; height: 400px; max-width: 100%; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                        <img src="G:\Spring 2026\web design\images\Ảnh đại diện portfolio.png" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="gioi-thieu" style="background: var(--white); width: 100%;">
+        <section>
+            <h2 class="section-title">Trang Giới Thiệu Bản Thân</h2>
+            
+            <div style="display: flex; gap: 40px; flex-wrap: wrap; margin-top: 20px;">
+                <div style="flex: 1; min-width: 300px; background: var(--bg-cream); padding: 35px; border-radius: 20px;">
+                    <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 15px; color: var(--teal-deep);">Thông Tin Cá Nhân</h3>
+                    <p style="margin-bottom: 10px;"><strong>Họ và tên:</strong> Ngô Quỳnh Minh</p>
+                    <p style="margin-bottom: 10px;"><strong>Mã số sinh viên:</strong> 25050673</p>
+                    <p style="margin-bottom: 10px;"><strong>Lớp / Ngành học:</strong> [Tên Lớp / Ngành Học]</p>
+                    <p style="margin-bottom: 10px;"><strong>Sở thích cá nhân:</strong> Nghiên cứu công nghệ, lập kế hoạch cá nhân, nghe nhạc Lofi khi tập trung làm việc.</p>
+                </div>
+                <div style="flex: 1; min-width: 300px; background: var(--box-espresso); padding: 35px; border-radius: 20px;">
+                    <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 15px; color: var(--strawberry);">Mục Tiêu & Định Hướng</h3>
+                    <p style="margin-bottom: 10px;"><strong>Mục tiêu Portfolio:</strong> Hệ thống hóa và trình bày một cách trực quan các sản phẩm số trong lớp học UEB.D2, chứng minh năng lực thực hành công nghệ.</p>
+                    <p style="margin-bottom: 10px;"><strong>Định hướng phát triển:</strong> Ứng dụng thành thạo các công cụ số và AI để nâng cao hiệu suất học tập, tối ưu quy trình làm việc và phát triển thương hiệu cá nhân.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="du-an">
+        <section>
+            <h2 class="section-title">Trang Dự Án Kỹ Thuật Số</h2>
+            <p class="section-subtitle">Tập hợp chuỗi bài tập thành phần từ Bài 1 đến Bài 6.</p>
+
+            <div class="portfolio-grid">
+                
+                <div class="exercise-card">
+                    <span class="exercise-badge">Bài 1 • Mục 1.4</span>
+                    <h3>Thao tác Cơ bản với Tệp tin & Thư mục</h3>
+                    <div class="academic-meta">
+                        <strong>Mục tiêu:</strong> Làm chủ cấu trúc lưu trữ và quy tắc quản lý dữ liệu máy tính khoa học.
+                    </div>
+                    
+                    
+                    <a href="project1.html" style="background: var(--teal-deep); color: var(--white); padding: 12px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; display: inline-block; box-shadow: 0 5px 15px rgba(74, 143, 150, 0.2); transition: var(--transition-smooth); text-align: center;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                        Xem Chi Tiết Quá Trình (8 Bước) →
+                    </a>
+                </div>
+                
+<div class="exercise-card">
+                    <span class="exercise-badge">Bài 2 • Mục 2.4</span>
+                    <h3>Tìm kiếm & Đánh giá Thông tin Học thuật</h3>
+                    <div class="academic-meta">
+                        <strong>Mục tiêu:</strong> Khai thác dữ liệu nâng cao thông qua các toán tử tìm kiếm chuyên sâu và kiểm định nguồn tin.
+                    </div>
+                    
+                    
+                    <a href="project2.html" style="background: var(--teal-deep); color: var(--white); padding: 12px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; display: inline-block; box-shadow: 0 5px 15px rgba(74, 143, 150, 0.2); transition: var(--transition-smooth); text-align: center;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                        Xem Chi Tiết Nghiên Cứu & Bảng Đánh Giá →
+                    </a>
+                </div>
+
+                <div class="exercise-card">
+                    <span class="exercise-badge">Bài 3 • Mục 3.4</span>
+                    <h3>Kỹ nghệ Câu lệnh (Prompt Engineering)</h3>
+                    <div class="academic-meta">
+                        <strong>Mục tiêu:</strong> Làm chủ tư duy giao tiếp và khai thác AI tạo sinh để tối ưu hiệu suất giải quyết bài toán.
+                    </div>
+                    
+                    <a href="project3.html" style="background: var(--teal-deep); color: var(--white); padding: 12px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; display: inline-block; box-shadow: 0 5px 15px rgba(74, 143, 150, 0.2); transition: var(--transition-smooth); text-align: center;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                        Xem Báo Cáo & Thử Nghiệm Prompt →
+                    </a>
+                </div>
+
+                <div class="exercise-card">
+                    <span class="exercise-badge">Bài 4 • Mục 4.4</span>
+                    <h3>Công Cụ Hợp Tác Trực Tuyến & Quản Lý Nhóm</h3>
+                    <div class="academic-meta">
+                        <strong>Mục tiêu:</strong> Làm chủ công cụ số tối ưu hóa hiệu suất làm việc nhóm và quản lý dự án.
+                    </div>
+                    
+                    
+                    <a href="project4.html" style="background: var(--teal-deep); color: var(--white); padding: 12px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; display: inline-block; box-shadow: 0 5px 15px rgba(74, 143, 150, 0.2); transition: var(--transition-smooth); text-align: center;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                        Xem Nhật Ký Hợp Tác & Minh Chứng →
+                    </a>
+                </div>
+
+                <div class="exercise-card">
+                    <span class="exercise-badge">Bài 5 • Mục 5.4</span>
+                    <h3>Sử Dụng AI Tạo Sinh Hỗ Trợ Sáng Tạo Nội Dung</h3>
+                    <div class="academic-meta">
+                        <strong>Mục tiêu:</strong> Tận dụng sức mạnh của Generative AI để lên ý tưởng, viết kịch bản, tạo hình ảnh và sản xuất video quảng bá văn hóa địa phương.
+                    </div>
+                    
+                    
+                    <a href="project5.html" style="background: var(--teal-deep); color: var(--white); padding: 12px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; display: inline-block; box-shadow: 0 5px 15px rgba(74, 143, 150, 0.2); transition: var(--transition-smooth); text-align: center;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                        Xem Video OCOP 60s & Báo Cáo Sáng Tạo →
+                    </a>
+                </div>
+
+                <!-- BÀI TẬP 6 -->
+                <div class="exercise-card">
+                    <span class="exercise-badge">Bài 6 • Mục 6.4</span>
+                    <h3>Sử Dụng AI Có Trách Nhiệm Trong Học Thuật</h3>
+                    <div class="academic-meta">
+                        <strong>Mục tiêu:</strong> Xây dựng khung đạo đức, quy tắc ứng xử cá nhân và thực nghiệm minh bạch hóa khi ứng dụng AI.
+                    </div>
+                    
+                    <!-- NÚT LIÊN KẾT ĐẾN TRANG RIÊNG CHỨA BÁO CÁO CHI TIẾT -->
+                    <a href="project6.html" style="background: var(--teal-deep); color: var(--white); padding: 12px 24px; border-radius: 10px; text-decoration: none; font-weight: 600; display: inline-block; box-shadow: 0 5px 15px rgba(74, 143, 150, 0.2); transition: var(--transition-smooth); text-align: center;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                        Xem Báo Cáo Nghiên Cứu & Infographic →
+                    </a>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <div id="tong-ket" style="background: var(--white); width: 100%;">
+        <section>
+            <div class="reflection-container">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 10px;">Trang Phản Tư & Tổng Kết</h2>
+                <p class="section-subtitle" style="text-align: center; margin: 0 auto 40px auto;">Tự nhìn lại cả quá trình xây dựng portfolio cá nhân này mình đọng lại được 3 điều.</p>
+                
+                <div class="reflection-grid">
+                    
+                    <div class="reflection-card">
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 15px; color: var(--teal-deep);">🌱 Thu Hoạch Lớn Nhất</h3>
+                        <p style="font-size: 0.95rem; color: var(--text-muted);">Mình đã thực sự vượt qua rào cản công nghệ để làm chủ các công cụ AI, biết cách tổ chức tư duy dữ liệu khoa học và sở hữu một không gian web cá nhân mang đậm dấu ấn riêng. Điều quan trọng nhất chính là hiểu rõ vấn đề và chia bài toán lớn ra thành nhiều bài toán nhỏ hơn theo quy tắc divide-conquer. Đặc biệt nhất là cách sử dụng AI, một câu hỏi được định nghĩa rõ ràng là một vấn để được giải một nửa!!</p>
+                    </div>
+
+                    <div class="reflection-card heart">
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 15px; color: var(--strawberry);">🔥 Thách Thức & Khó Khăn</h3>
+                        <p style="font-size: 0.95rem; color: var(--text-muted);">Khó khăn lớn nhất chính là giai đoạn ban đầu khi không biết bắt đầu từ đâu và cũng có quá nhiều lựa chọn khả dĩ ở giai đoạn đầu. Việc từ tìm tòi học hỏi và so sánh các cách thức xây dựng một website portfolio mới tốn khá nhiều thời gian và công sức. Nhưng khi nắm rõ được bản chất vấn đề thì mọi thứ khá trôi chảy.</p>
+                    </div>
+
+                    <div class="reflection-card star">
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 15px; color: var(--amber-glow);">🚀 Chiến Lược Tương Lai</h3>
+                        <p style="font-size: 0.95rem; color: var(--text-muted);">Kinh nghiệm qua việc lần đầu tiên xây dựng trang cá nhân rất hữu dụng với vai trò tạo dựng thương hiệu cá nhân của mình sau này. Với trải nghiệm này trong tương lai mình có dự phát triển blog cá nhân với nội dung sáng tạo hơn và ý nghĩa hơn.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2026 Designed and Curated by [Tên Của Bạn]. All Rights Reserved.</p>
+        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;">Sản phẩm thuộc học phần Nhập môn Công nghệ số và Ứng dụng AI - Đạt chuẩn Mức 4 Rubric.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('div[id]');
+            const navItems = document.querySelectorAll('.nav-item');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-30% 0px -60% 0px',
+                threshold: 0
+            };
+
+            const observerCallback = (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navItems.forEach(item => item.classList.remove('active'));
+                        const activeNavItem = document.getElementById(`nav-${id}`);
+                        if (activeNavItem) {
+                            activeNavItem.classList.add('active');
+                        }
+                    }
+                });
+            };
+
+            const observer = new IntersectionObserver(observerCallback, observerOptions);
+            sections.forEach(section => observer.observe(section));
+        });
+    </script>
+</body>
+</html>

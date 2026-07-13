@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết Bài Tập 3 - Kỹ nghệ Câu lệnh (Prompt Engineering)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-cream: #FAF6F0;
+            --box-espresso: #F3ECE2;
+            --amber-glow: #E27D60;
+            --teal-deep: #4A8F96;
+            --strawberry: #E25B5B;
+            --text-dark: #2C2523;
+            --text-muted: #6E605D;
+            --white: #FFFFFF;
+            --transition-smooth: all 0.3s ease;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            padding: 50px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--teal-deep);
+            font-weight: 600;
+            margin-bottom: 30px;
+            transition: var(--transition-smooth);
+        }
+
+        .back-link:hover { transform: translateX(-5px); opacity: 0.8; }
+
+        .header-section {
+            margin-bottom: 40px;
+            border-bottom: 2px dashed rgba(110, 96, 93, 0.15);
+            padding-bottom: 25px;
+        }
+
+        .header-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+
+        .header-section p { color: var(--text-muted); font-size: 1.05rem; }
+
+        .content-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(44, 37, 35, 0.02);
+            border: 1px solid rgba(110, 96, 93, 0.06);
+            margin-bottom: 35px;
+        }
+
+        .section-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-left: 5px solid var(--teal-deep);
+            padding-left: 15px;
+        }
+
+        .meta-box {
+            background: var(--bg-cream);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px dashed rgba(110, 96, 93, 0.2);
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        /* PROMPT DISPLAY BLOCKS */
+        .task-block {
+            border-bottom: 1px solid rgba(110, 96, 93, 0.1);
+            padding-bottom: 25px;
+            margin-bottom: 25px;
+        }
+        .task-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        
+        .task-title {
+            font-size: 1.2rem;
+            color: var(--amber-glow);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .prompt-level {
+            font-weight: 600;
+            margin-top: 15px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: var(--white);
+            margin-right: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .badge-basic { background-color: var(--text-muted); }
+        .badge-improved { background-color: var(--teal-deep); }
+        .badge-advanced { background-color: var(--strawberry); }
+
+        .prompt-quote {
+            background: #2E2528;
+            color: #F4EAE1;
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--teal-deep);
+            white-space: pre-wrap;
+            line-height: 1.5;
+        }
+
+        /* TABLE STYLE */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(110, 96, 93, 0.12);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            text-align: left;
+            background: var(--white);
+        }
+
+        .data-table th {
+            background: var(--teal-deep);
+            color: var(--white);
+            padding: 14px 16px;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(110, 96, 93, 0.08);
+            color: var(--text-dark);
+            vertical-align: top;
+        }
+
+        .data-table tr:hover { background: var(--bg-cream); }
+
+        /* IMAGE DISPLAY WRAPPER */
+        .image-showcase {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        @media (max-width: 768px) { .image-showcase { grid-template-columns: 1fr; } }
+
+        .image-box {
+            background: var(--box-espresso);
+            padding: 15px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(110, 96, 93, 0.1);
+        }
+        .image-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+            margin-bottom: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .image-box span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        ul { padding-left: 20px; color: var(--text-muted); }
+        li { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html#du-an" class="back-link">← Quay lại trang chủ Portfolio</a>
+
+        <div class="header-section">
+            <span style="color: var(--strawberry); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;">Bài tập thành phần số 3</span>
+            <h1>Kỹ nghệ Câu lệnh (Prompt Engineering)</h1>
+            <p>Nghiên cứu, thử nghiệm và tối ưu hóa câu lệnh giao tiếp với AI cho các tác vụ học tập chuyên sâu.</p>
+        </div>
+
+        <div class="content-card">
+            <h2 class="section-subtitle">I. Giới thiệu & Bối cảnh Thử nghiệm</h2>
+            <div class="meta-box">
+                <p><b>• Môn học ứng dụng:</b> Kinh tế Vi mô & Vĩ mô (Chuyên đề Lý thuyết hành vi người tiêu dùng).</p>
+                <p><b>• Chủ đề trọng tâm:</b> Đường Thu nhập - Tiêu dùng (ICC), Đường Engel và phân loại hàng hóa (Hàng hóa thông thường vs Hàng hóa thứ cấp).</p>
+                <p><b>• Công cụ AI thử nghiệm:</b> Google Gemini / ChatGPT-4o.</p>
+                <p><b>• Mục tiêu:</b> Đánh giá tầm quan trọng của cấu trúc câu lệnh đối với chất lượng phản hồi từ AI, từ đó rút ra bộ nguyên tắc tối ưu hóa hiệu suất học tập.</p>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Trong quá trình học tập môn Kinh tế học, việc hiểu sai bản chất của các đồ thị hoặc nhầm lẫn giữa các biến số là rất phổ biến. Bài tập này đi sâu vào việc thiết kế 3 cấp độ câu lệnh từ sơ khai đến chuyên sâu để biến AI thành một gia sư kinh tế thực thụ, giúp giải thích khái niệm, tóm tắt tài liệu và ra đề thi thử sát với thực tế.</p>
+        </div>
+
+        <div class="content-card">
+            <h2 class="section-subtitle">II. Thiết kế Các Phiên bản Prompt theo Tác vụ</h2>
+            
+            <div class="task-block">
+                <div class="task-title">📌 Tác vụ 1: Tóm tắt bài đọc / Tài liệu học thuật</div>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px;"><i>Nội dung áp dụng: Đoạn văn bản và bảng dữ liệu so sánh giữa đường ICC và đường Engel.</i></p>
+                
+                <div class="prompt-level"><span class="badge badge-basic">Cơ bản</span> Câu lệnh đơn giản, thiếu ngữ cảnh:</div>
+                <div class="prompt-quote">"Tóm tắt giúp mình nội dung về đường ICC và đường Engel."</div>
+
+                <div class="prompt-level"><span class="badge badge-improved">Cải tiến</span> Câu lệnh có cấu trúc và giới hạn đầu ra:</div>
+                <div class="prompt-quote">"Hãy tóm tắt nội dung về mối quan hệ giữa đường ICC và đường Engel dựa trên tài liệu Kinh tế học. Yêu cầu: Trình bày ngắn gọn dưới dạng 3-4 dòng bullet points, tập trung vào sự khác biệt cốt lõi về mục đích và biến số thay đổi."</div>
+
+                <div class="prompt-level"><span class="badge badge-advanced">Nâng cao</span> Role-play + Output Constraints + Data Mapping:</div>
+                <div class="prompt-quote">"Bạn là một Trợ lý học tập chuyên ngành Kinh tế học xuất sắc. Nhiệm vụ của bạn là đọc hiểu đoạn văn bản và bảng dữ liệu được cung cấp, sau đó tóm tắt lại cho một sinh viên năm nhất dễ dàng ôn tập. 
+
+Yêu cầu định dạng đầu ra:
+1. Định nghĩa ngắn gọn mối quan hệ phụ thuộc giữa 2 đường.
+2. Tạo một bảng so sánh đối chiếu gồm 3 cột: Đặc điểm | Đường ICC | Đường Engel (Dựa trực tiếp trên dữ liệu gốc: Trục đồ thị, Mục đích, Biến số).
+3. Phát biểu định luật Engel bằng 1 câu duy nhất trực quan, dễ nhớ."</div>
+            </div>
+
+            <div class="task-block">
+                <div class="task-title">📌 Tác vụ 2: Giải thích một khái niệm phức tạp</div>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px;"><i>Nội dung áp dụng: Khái niệm "Hàng hóa thứ cấp" (Inferior Goods) và hiện tượng đường Engel vòng ngược lại (độ dốc âm) khi thu nhập bão hòa.</i></p>
+                
+                <div class="prompt-level"><span class="badge badge-basic">Cơ bản</span> Câu lệnh hỏi ngắn gọn:</div>
+                <div class="prompt-quote">"Hàng hóa thứ cấp là gì? Tại sao đồ thị của nó lại vòng ngược lại?"</div>
+
+                <div class="prompt-level"><span class="badge badge-improved">Cải tiến</span> Câu lệnh chi tiết kèm yêu cầu ví dụ:</div>
+                <div class="prompt-quote">"Hãy giải thích khái niệm 'Hàng hóa thứ cấp' và giải thích tại sao khi thu nhập tăng, đồ thị tiêu dùng của nó lại có độ dốc âm (vòng ngược lại). Cho ví dụ thực tế để minh họa."</div>
+
+                <div class="prompt-level"><span class="badge badge-advanced">Nâng cao</span> Chain-of-Thought (Tư duy từng bước) + Analogy (Ẩn dụ):</div>
+                <div class="prompt-quote">"Bạn là một giảng viên Kinh tế vi mô có tài diễn đạt cực kỳ hóm hỉnh và dễ hiểu. Hãy giải thích khái niệm 'Hàng hóa thứ cấp' và hiện tượng đường biểu diễn bị 'vòng ngược lại' cho một người chưa từng học kinh tế.
+
+Hãy suy nghĩ và giải thích theo từng bước (Chain-of-Thought):
+- Bước 1: Định nghĩa đơn giản hóa bằng một câu chuyện ẩn dụ thực tế (Ví dụ: Sự chuyển đổi hành vi từ ăn mì tôm sang ăn bít tết khi mức sống tăng lên).
+- Bước 2: Phân tích hành vi tâm lý của người tiêu dùng khi thu nhập tăng từ mức thấp (I1) lên mức cao (I2).
+- Bước 3: Giải thích mối liên hệ logic dẫn đến việc đồ thị quay đầu đi xuống (độ dốc âm).
+
+Sử dụng giọng văn gần gũi, chèn các từ ngữ trực quan như 'bị ghẻ lạnh' để sinh viên dễ liên tưởng."</div>
+            </div>
+
+            <div class="task-block">
+                <div class="task-title">📌 Tác vụ 3: Tạo bộ câu hỏi ôn tập</div>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px;"><i>Nội dung áp dụng: Tạo đề thi thử trắc nghiệm và tự luận về ICC, Engel và định luật tiêu dùng.</i></p>
+                
+                <div class="prompt-level"><span class="badge badge-basic">Cơ bản</span> Câu lệnh chung chung:</div>
+                <div class="prompt-quote">"Tạo cho mình vài câu hỏi ôn tập về đường ICC và Engel."</div>
+
+                <div class="prompt-level"><span class="badge badge-improved">Cải tiến</span> Câu lệnh có định lượng và phân loại:</div>
+                <div class="prompt-quote">"Hãy tạo một bộ câu hỏi ôn tập gồm 3 câu hỏi trắc nghiệm (có đáp án) và 2 câu hỏi tự luận ngắn về chủ đề mối quan hệ giữa đường ICC và đường Engel."</div>
+
+                <div class="prompt-level"><span class="badge badge-advanced">Nâng cao</span> Few-shot Prompting (Ví dụ mẫu) + Bloom's Taxonomy:</div>
+                <div class="prompt-quote">"Bạn là chuyên gia thiết kế đề thi đại học môn Kinh tế học. Hãy tạo một bộ câu hỏi ôn tập toàn diện về 'Đường thu nhập - Tiêu dùng và Đường Engel' dựa trên các cấp độ nhận thức của thang Bloom (Nhận biết, Thông hiểu, Vận dụng).
+
+Ví dụ về cấu trúc câu hỏi mong muốn (Few-shot):
+*Câu hỏi mẫu:* Khi thu nhập tăng, tỷ trọng thu nhập chi cho thực phẩm giảm xuống là nội dung của định luật nào? -> Đáp án: Định luật Engel.
+
+Hãy tạo bộ câu hỏi mới gồm:
+- 2 Câu trắc nghiệm nhận biết (Kèm đáp án và giải thích ngắn gọn tại sao các phương án khác sai).
+- 1 Câu hỏi tình huống vận dụng cao (Ví dụ: Phân tích sự dịch chuyển giỏ hàng hóa của một gia đình khi thu nhập tăng đột biến từ 15 triệu lên 50 triệu/tháng)."</div>
+            </div>
+
+        </div>
+
+        <div class="content-card">
+            <h2 class="section-subtitle">III. Bảng So sánh Kết quả & Minh chứng Thực nghiệm</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Đánh giá chất lượng đầu ra sau khi chạy thực tế 3 cấp độ Prompt trên hệ thống AI:</p>
+            
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 180px;">Tiêu chí Đánh giá</th>
+                            <th>Prompt Cơ bản (Basic)</th>
+                            <th>Prompt Cải tiến (Improved)</th>
+                            <th>Prompt Nâng cao (Advanced)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>Độ chính xác nội dung</b></td>
+                            <td>Khá chung chung, liệt kê lý thuyết bề nổi, dễ bỏ sót ý chính nếu tài liệu dài.</td>
+                            <td>Chính xác, bám sát các từ khóa và nội dung trọng tâm được liệt kê.</td>
+                            <td><b>Tuyệt đối chính xác</b>, khai thác triệt để logic kinh tế và kết nối tốt giữa các biến số $I, Q, X, Y$.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Bố cục & Định dạng</b></td>
+                            <td>Đoạn văn bản dài thô, không phân cấp, rất khó đọc lướt để ôn tập.</td>
+                            <td>Gọn gàng, đã có gạch đầu dòng (bullet points) theo đúng giới hạn lệnh.</td>
+                            <td><b>Trực quan xuất sắc</b>, tự động kẻ bảng so sánh 3 cột, phân chia từng bước tư duy rõ ràng.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Văn phong & Ngữ cảnh</b></td>
+                            <td>Giọng máy móc, mang tính từ điển bách khoa khô khan.</td>
+                            <td>Nghiêm túc, chuẩn mực, phù hợp với môi trường đọc hiểu học thuật.</td>
+                            <td><b>Sinh động, cuốn hút</b>, giải thích hóm hỉnh đúng vai trò gia sư, chèn các câu chuyện ẩn dụ thực tế.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Hiệu quả ôn thi</b></td>
+                            <td>Thấp (Sinh viên phải tự tóm tắt lại một lần nữa từ lời giải của AI).</td>
+                            <td>Khá tốt (Giúp nắm nhanh khái niệm cốt lõi trong thời gian ngắn).</td>
+                            <td><b>Tối ưu (100%)</b>, cấu trúc hỏi đáp Thang Bloom giúp hiểu sâu bản chất và thuộc bài ngay tại chỗ.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-top: 30px; margin-bottom: 15px; color: var(--teal-deep);">📸 Ảnh chụp thực tế kết quả đối chiếu trên AI</h3>
+            <div class="image-showcase">
+                <div class="image-box">
+                    <img src="3.2 prompt gốc.jpeg" alt="Kết quả chạy Prompt Gốc">
+                    <span>Kết quả khi dùng Prompt Gốc (Cơ bản)</span>
+                </div>
+                <div class="image-box">
+                    <img src="3.3 prompt nâng cấp.jpeg" alt="Kết quả chạy Prompt Nâng Cấp">
+                    <span>Kết quả khi dùng Prompt Nâng Cấp (Chuyên sâu)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2 class="section-subtitle">IV. Phân tích Lý do & Bộ Nguyên tắc Vàng (General Principles)</h2>
+            
+            <h3 style="font-size: 1.1rem; color: var(--text-dark); margin-bottom: 10px;">💡 Tại sao Prompt nâng cao lại mang lại sự khác biệt vượt trội?</h3>
+            <ul>
+                <li><b>Gán vai trò chuyên gia (Role-Prompting):</b> Khi đặt AI vào vai "Giảng viên Kinh tế Vi mô", hệ thống tự động điều chỉnh bộ từ vựng (vocabulary weight) ưu tiên các thuật ngữ học thuật chuyên sâu và cách diễn đạt mang tính sư phạm.</li>
+                <li><b>Tác động của Chain-of-Thought (CoT):</b> Việc buộc AI giải thích theo từng bước  giúp mô hình không bị "nhảy cóc" tư duy, đặc biệt hiệu quả khi giải thích hiện tượng nghịch lý như đường Engel quay đầu có độ dốc âm.</li>
+                <li><b>Sức mạnh của Few-shot Examples:</b> Khi cung cấp mẫu 1 câu hỏi định luật Engel làm ví dụ, AI lập tức "học" được mức độ khó, định dạng câu trả lời và cách gài bẫy trắc nghiệm chuẩn xác theo ý người dùng.</li>
+            </ul>
+
+            <h3 style="font-size: 1.1rem; color: var(--text-dark); margin-top: 20px; margin-bottom: 10px;">🎯 3 Nguyên tắc Vàng khi giao tiếp với AI trong học tập:</h3>
+            <ul>
+                <li><b>Nguyên tắc C-C-R (Context - Constraint - Role):</b> Luôn đảm bảo câu lệnh có đủ 3 trụ cột: Bối cảnh (Đang ôn thi môn gì, cấp độ nào) - Giới hạn (Độ dài, kẻ bảng, format đầu ra) - Vai trò (Gia sư, chuyên gia hay người phản biện).</li>
+                <li><b>Nguyên tắc "Garbage in, Garbage out":</b> Prompt càng mơ hồ thì câu trả lời càng chung chung. Thay vì hỏi "Hàng hóa thứ cấp là gì?", hãy chỉ định rõ phương pháp giải thích như "Hãy giải thích bằng phương pháp ẩn dụ thực tế".</li>
+                <li><b>Tận dụng tối đa dữ liệu đính kèm (Multimodal):</b> Tải trực tiếp ảnh chụp đồ thị bài giảng hoặc file PDF tài liệu lên và ra lệnh cho AI "Chỉ được phân tích dựa trên tài liệu đính kèm" để triệt tiêu hoàn toàn hiện tượng AI tự bịa kiến thức (Hallucination).</li>
+            </ul>
+        </div>
+
+    </div>
+
+</body>
+</html>

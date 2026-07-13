@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết Bài Tập 1 - Thao tác Tệp & Thư mục</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-cream: #FAF6F0;
+            --box-espresso: #F3ECE2;
+            --amber-glow: #E27D60;
+            --teal-deep: #4A8F96;
+            --text-dark: #2C2523;
+            --text-muted: #6E605D;
+            --white: #FFFFFF;
+            --transition-smooth: all 0.3s ease;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            padding: 50px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--teal-deep);
+            font-weight: 600;
+            margin-bottom: 30px;
+            transition: var(--transition-smooth);
+        }
+
+        .back-link:hover { transform: translateX(-5px); opacity: 0.8; }
+
+        .header-section {
+            margin-bottom: 45px;
+            border-bottom: 2px dashed rgba(110, 96, 93, 0.15);
+            padding-bottom: 25px;
+        }
+
+        .header-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+
+        .header-section p { color: var(--text-muted); font-size: 1.05rem; }
+
+        .step-list { display: flex; flex-direction: column; gap: 40px; }
+
+        .step-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(44, 37, 35, 0.02);
+            border: 1px solid rgba(110, 96, 93, 0.06);
+        }
+
+        .step-badge {
+            background: rgba(226, 125, 96, 0.1);
+            color: var(--amber-glow);
+            padding: 4px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .step-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .step-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
+
+        .image-wrapper {
+            width: 100%;
+            background: var(--box-espresso);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(110, 96, 93, 0.1);
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html#du-an" class="back-link">← Quay lại trang chủ Portfolio</a>
+
+        <div class="header-section">
+            <span style="color: var(--teal-deep); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;">Nhật ký dự án kỹ thuật số</span>
+            <h1>Quy trình Quản lý Tệp tin & Thư mục Khoa học</h1>
+            <p>Trình bày chi tiết chuỗi thực hành thiết lập không gian lưu trữ học tập, phân loại dữ liệu và tối ưu cấu trúc cây thư mục trên máy tính cá nhân.</p>
+        </div>
+
+        <div class="step-list">
+
+            <div class="step-card">
+                <span class="step-badge">BƯỚC 1</span>
+                <h2>Mở file explorer và truy cập vào ổ đĩa</h2>
+                <div class="image-wrapper">
+                    <img src="Bước 1.png" alt="Minh họa Bước 1">
+                </div>
+            </div>
+
+            <div class="step-card">
+                <span class="step-badge">BƯỚC 2</span>
+                <h2>Tạo thư mục mới</h2>
+                <div class="image-wrapper">
+                    <img src="Bước 2.png" alt="Minh họa Bước 2">
+                </div>
+            </div>
+
+            <div class="step-card">
+                <span class="step-badge">BƯỚC 3</span>
+                <h2>Tạo tệp tin và văn bản</h2>
+                <div class="image-wrapper">
+                    <img src="Bước 3.png" alt="Minh họa Bước 3">
+                </div>
+            </div>
+
+            <div class="step-card">
+                <span class="step-badge">BƯỚC 4</span>
+                <h2>Đổi tên</h2>
+                <div class="image-wrapper">
+                    <img src="Bước 4.png" alt="Minh họa Bước 4">
+                </div>
+            </div>
+
+            <div class="step-card">
+                <span class="step-badge">BƯỚC 5</span>
+                <h2>Tạo thư mục con</h2>
+                <div class="image-wrapper">
+                    <img src="Bước 5.png" alt="Minh họa Bước 5">
+                </div>
+            </div>
+
+            <div class="step-card">
+                <span class="step-badge">BƯỚC 6</span>
+                <h2>Sao chép</h2>
+                <div class="image-wrapper">
+                    <img src="Bước 6.png" alt="Minh họa Bước 6">
+                </div>
+            </div>
+
+            <div class="step-card">
+                <span class="step-badge">BƯỚC 7</span>
+                <h2>Di chuyển</h2>
+                <div class="image-wrapper">
+                    <img src="Bước 7.png" alt="Minh họa Bước 7">
+                </div>
+            </div>
+
+            <div class="step-card">
+                <span class="step-badge">BƯỚC 8</span>
+                <h2>Xóa</h2>
+                <div class="image-wrapper">
+                    <img src="Bước 8.png" alt="Minh họa Bước 8">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
