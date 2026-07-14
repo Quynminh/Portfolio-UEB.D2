@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi tiết Bài Tập 6 - Sử Dụng AI Có Trách Nhiệm Trong Học Thuật</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght=600;700&family=Plus+Jakarta+Sans:wght=400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-cream: #FAF6F0;
@@ -227,30 +227,105 @@
         }
         .transparency-box h4 { color: var(--teal-deep); margin-bottom: 6px; font-size: 1rem; }
 
-        /* INFOGRAPHIC SHOWCASE */
-        .image-box {
-            background: var(--box-espresso);
-            padding: 20px;
+        /* 👑 CODE CSS THIẾT KẾ INFOGRAPHIC NATIVE 👑 */
+        .infographic-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 25px;
+            padding: 10px 0;
+        }
+        @media (max-width: 850px) {
+            .infographic-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        .info-step {
+            background: var(--bg-cream);
             border-radius: 16px;
+            padding: 25px;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(44, 37, 35, 0.03);
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(110, 96, 93, 0.08);
+        }
+        .info-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(110, 96, 93, 0.1);
+        }
+        .info-step-badge {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.75rem;
+            padding: 4px 14px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .info-step.step-1 { border-top: 5px solid var(--strawberry); }
+        .info-step.step-1 .info-step-badge { background: var(--strawberry); }
+        
+        .info-step.step-2 { border-top: 5px solid var(--teal-deep); }
+        .info-step.step-2 .info-step-badge { background: var(--teal-deep); }
+        
+        .info-step.step-3 { border-top: 5px solid var(--amber-glow); }
+        .info-step.step-3 .info-step-badge { background: var(--amber-glow); }
+
+        .info-step-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+        .info-step-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .info-step-list li {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            line-height: 1.4;
+        }
+        .info-step-list li::before {
+            content: "✦";
+            font-weight: bold;
+        }
+        .info-step.step-1 .info-step-list li::before { color: var(--strawberry); }
+        .info-step.step-2 .info-step-list li::before { color: var(--teal-deep); }
+        .info-step.step-3 .info-step-list li::before { color: var(--amber-glow); }
+
+        .info-footer {
+            grid-column: span 3;
+            background: var(--box-espresso);
+            padding: 15px;
+            border-radius: 12px;
             text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-dark);
             border: 1px solid rgba(110, 96, 93, 0.1);
-            margin-top: 20px;
+            margin-top: 10px;
         }
-        .image-box img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            display: block;
-            margin: 0 auto 12px auto;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        @media (max-width: 850px) {
+            .info-footer {
+                grid-column: span 1;
+            }
         }
-        .image-box span { font-size: 0.9rem; color: var(--text-muted); font-weight: 600; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- NÚT QUAY LẠI TRANG CHỦ -->
         <a href="index.html#du-an" class="back-link">← Quay lại trang chủ Portfolio</a>
 
         <div class="header-section">
@@ -259,10 +334,9 @@
             <p>Xây dựng khung đạo đức, quy tắc ứng xử và thực nghiệm ứng dụng Trí tuệ Nhân tạo trong nghiên cứu Kế toán - Tài chính.</p>
         </div>
 
-        <!-- PHẦN 1: NGHIÊN CỨU CHÍNH SÁCH -->
         <div class="content-card">
             <h2 class="section-subtitle">1. Nghiên cứu chính sách sử dụng AI của các trường Đại học tại Việt Nam</h2>
-            <p style="color: var(--text-muted); font-size: 0.95rem;">Hiện nay, các cơ sở giáo dục đại học lớn tại Việt Nam (như Đại học Quốc gia Hà Nội, Đại học Bách khoa Hà Nội) đã tiên phong ban hành các văn bản hướng dẫn chính thức về việc tích hợp Trí tuệ nhân tạo (AI) vào hoạt động học tập và giảng dạy. Khung chính sách chung được xác lập dựa trên 3 trụ cột cơ bản:</p>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Hiện nay, các cơ sở giáo dục đại học lớn tại Việt Nam (nhu Đại học Quốc gia Hà Nội, Đại học Bách khoa Hà Nội) đã tiên phong ban hành các văn bản hướng dẫn chính thức về việc tích hợp Trí tuệ nhân tạo (AI) vào hoạt động học tập và giảng dạy. Khung chính sách chung được xác lập dựa trên 3 trụ cột cơ bản:</p>
             
             <div class="grid-3">
                 <div class="policy-card">
@@ -280,7 +354,6 @@
             </div>
         </div>
 
-        <!-- PHẦN 2: THỰC NGHIỆM CHI TIẾT -->
         <div class="content-card">
             <h2 class="section-subtitle">2. Thực nghiệm nhiệm vụ học tập với sự hỗ trợ của AI</h2>
             <div class="meta-box">
@@ -304,7 +377,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- ROA -->
                         <tr>
                             <td>
                                 <span class="ratio-title">ROA</span>
@@ -323,7 +395,6 @@
                                 Lợi nhuận ròng tăng mạnh (do giảm chi phí) kết hợp Tổng tài sản tăng, nhưng tử số tăng mạnh hơn.
                             </td>
                         </tr>
-                        <!-- ROE -->
                         <tr>
                             <td>
                                 <span class="ratio-title">ROE</span>
@@ -342,7 +413,6 @@
                                 Lợi nhuận ròng tăng vọt do chi phí "biến mất" khỏi báo cáo kết quả kinh doanh.
                             </td>
                         </tr>
-                        <!-- Current Ratio -->
                         <tr>
                             <td>
                                 <span class="ratio-title">Current Ratio</span>
@@ -361,7 +431,6 @@
                                 Nếu chi phí được vốn hóa thành tài sản dài hạn thì không ảnh hưởng đến Tài sản ngắn hạn.
                             </td>
                         </tr>
-                        <!-- Quick Ratio -->
                         <tr>
                             <td>
                                 <span class="ratio-title">Quick Ratio</span>
@@ -380,7 +449,6 @@
                                 Không tác động trực tiếp đến các cấu phần của tài sản thanh toán nhanh.
                             </td>
                         </tr>
-                        <!-- Debt Ratio -->
                         <tr>
                             <td>
                                 <span class="ratio-title">Debt Ratio</span>
@@ -399,7 +467,6 @@
                                 Tổng tài sản tăng lên (do vốn hóa chi phí thành tài sản cố định/dài hạn) làm mẫu số tăng.
                             </td>
                         </tr>
-                        <!-- Inventory Turnover -->
                         <tr>
                             <td>
                                 <span class="ratio-title">Inventory Turnover</span>
@@ -418,7 +485,6 @@
                                 Tùy thuộc vào việc chi phí bị hoãn lại đó có liên quan đến chi phí sản xuất cấu thành giá vốn hay không.
                             </td>
                         </tr>
-                        <!-- Average Collection Period -->
                         <tr>
                             <td>
                                 <span class="ratio-title">Average Collection Period</span>
@@ -441,19 +507,16 @@
                 </table>
             </div>
 
-            <!-- ĐÁNH GIÁ & CẢI TIẾN -->
             <h3 style="font-size: 1.1rem; color: var(--teal-deep); margin-top: 25px;">🔍 Đánh giá và Cải tiến câu lệnh:</h3>
             <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 8px;"><b>• Nhận xét kết quả ban đầu:</b> AI đáp ứng rất tốt yêu cầu định hướng chỉ số nào tăng, giảm và định lượng mức độ. Tuy nhiên, phần giải thích cơ chế tác động còn sơ sài, chưa chỉ ra gốc rễ việc biến động các tài khoản kế toán cụ thể trên Bảng cân đối kế toán và Báo cáo kết quả hoạt động kinh doanh.</p>
             <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 8px;"><b>• Biện pháp khắc phục (Iterative Prompting):</b> Sử dụng thêm câu lệnh nối tiếp: <i>“Hãy giải thích rõ tại sao lại tăng giảm chỉ số bằng cách chỉ ra sự thay đổi của tử số và mẫu số trong công thức tài chính tương ứng...”</i>. Sau đó, kết hợp với kiến thức nền tảng tài chính của bản thân để hiệu đính, loại bỏ sai sót và hoàn thiện bảng phân tích hợp lý nhất.</p>
 
-            <!-- TUYÊN BỐ MINH BẠCH -->
             <div class="transparency-box">
                 <h4>🛡️ Trích dẫn việc sử dụng AI một cách minh bạch (AI Usage Declaration)</h4>
                 <p style="font-size: 0.9rem; color: var(--text-dark);"><i>"Bài báo cáo nghiên cứu này có sử dụng công cụ hỗ trợ Google Gemini trong giai đoạn động não, phân nhóm chỉ số và cấu trúc đề cương bảng biểu ban đầu. Toàn bộ nội dung chi tiết, phân tích bản chất tài chính, số liệu thực tế cùng việc thẩm định tính chính xác cuối cùng đều do người học tự nghiên cứu, biên soạn và chịu trách nhiệm hoàn toàn."</i></p>
             </div>
         </div>
 
-        <!-- PHẦN 3: PHÂN TÍCH ĐẠO ĐỨC -->
         <div class="content-card">
             <h2 class="section-subtitle">3. Phân tích các vấn đề đạo đức liên quan đến AI trong học thuật</h2>
             
@@ -473,7 +536,6 @@
             </div>
         </div>
 
-        <!-- PHẦN 4: NGUYÊN TẮC CÁ NHÂN -->
         <div class="content-card">
             <h2 class="section-subtitle">4. Tuyên ngôn 5 Nguyên tắc cá nhân về sử dụng AI có trách nhiệm</h2>
             <p style="color: var(--text-muted); font-size: 0.95rem;">Để cân bằng giữa việc tận dụng sức mạnh công nghệ số và bảo vệ liêm chính học thuật, tôi xác lập 5 nguyên tắc ứng xử kiên định trong quá trình học tập:</p>
@@ -517,15 +579,45 @@
             </div>
         </div>
 
-        <!-- PHẦN 5: INFOGRAPHIC -->
         <div class="content-card" style="border-top: 4px solid var(--teal-deep);">
             <h2 class="section-subtitle">5. Infographic: Khung tư duy AI trong học thuật</h2>
             <p style="color: var(--text-muted); font-size: 0.95rem;">Trực quan hóa hành trình từ nhận thức đạo đức đến ứng dụng thực tế của sinh viên trong thời đại Trí tuệ Nhân tạo:</p>
             
-            <div class="image-box">
-                <!-- Bạn chỉ cần thiết kế Infographic bằng Canva, lưu dưới tên image_6.1.png và để cùng thư mục web -->
-                <img src="image_6.1.png" alt="Infographic Sử Dụng AI Có Trách Nhiệm">
-                <span>[Infographic] 5 Nguyên tắc vàng & Khung đạo đức sử dụng AI trong nghiên cứu học thuật</span>
+            <div class="infographic-container">
+                
+                <div class="info-step step-1">
+                    <div class="info-step-badge">Giai đoạn 1</div>
+                    <h3 class="info-step-title">Khởi Tạo (Ý Tưởng Gốc)</h3>
+                    <ul class="info-step-list">
+                        <li>Luôn tự tư duy độc lập trước khi kích hoạt máy tính.</li>
+                        <li>Lập dàn ý (Outline) thô bằng kiến thức cá nhân thu nạp được.</li>
+                        <li>Đặt ra các câu hỏi cốt lõi, xác định mục tiêu và thông điệp bài viết.</li>
+                    </ul>
+                </div>
+
+                <div class="info-step step-2">
+                    <div class="info-step-badge">Giai đoạn 2</div>
+                    <h3 class="info-step-title">Đồng Sáng Tạo (Hợp Tác)</h3>
+                    <ul class="info-step-list">
+                        <li>Dùng AI để động não (Brainstorm) mở rộng góc nhìn và phân tích đa chiều.</li>
+                        <li>Gợi ý cấu trúc bảng biểu, chỉnh sửa ngữ pháp và dịch thuật ngôn ngữ.</li>
+                        <li>Sử dụng phương pháp "Iterative Prompting" để dẫn dắt AI đào sâu tư duy.</li>
+                    </ul>
+                </div>
+
+                <div class="info-step step-3">
+                    <div class="info-step-badge">Giai đoạn 3</div>
+                    <h3 class="info-step-title">Liêm Chính (Thẩm Định)</h3>
+                    <ul class="info-step-list">
+                        <li>Đối chiếu, kiểm chứng tuyệt đối số liệu thực tế nhằm tránh lỗi "ảo giác AI".</li>
+                        <li>Viết lại hoàn toàn nội dung thô theo giọng văn cá nhân học thuật.</li>
+                        <li>Minh bạch khai báo phạm vi sử dụng AI ở chân trang báo cáo.</li>
+                    </ul>
+                </div>
+
+                <div class="info-footer">
+                    🎯 KẾT LUẬN: Đạo đức học thuật không ngăn cấm công nghệ, mà yêu cầu việc sử dụng công nghệ một cách trung thực và có trách nhiệm!
+                </div>
             </div>
         </div>
 
