@@ -1,18 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>In toàn bộ Portfolio</title>
     <style>
-        iframe { width: 100%; height: 100vh; border: none; page-break-after: always; }
+        /* Reset lề cơ bản */
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: #FAF6F0; /* Đồng bộ màu nền kem nhã nhặn của bạn */
+        }
+
+        /* Định dạng khung nhúng */
+        .page-frame {
+            width: 100%;
+            height: 100vh; /* Chiều cao chiếm trọn màn hình */
+            border: none;
+            display: block;
+        }
+
+        /* 👑 QUY TẮC IN: Tự động ngắt trang khi xuất PDF 👑 */
+        @media print {
+            body, html {
+                background-color: #ffffff; /* Chuyển nền trắng khi in để tiết kiệm mực */
+            }
+            .page-frame {
+                page-break-after: always; /* Cứ hết 1 trang iframe thì bắt buộc ngắt sang trang PDF mới */
+                break-after: page;
+                height: 100% !important; /* Đảm bảo in được hết chiều dài trang mà không bị cuộn */
+            }
+        }
     </style>
 </head>
 <body>
-    <iframe src="index.html"></iframe>
-    <iframe src="project1.html"></iframe>
-    <iframe src="project2.html"></iframe>
-    <iframe src="project3.html"></iframe>
-    <iframe src="project4.html"></iframe>
-    <iframe src="project5.html"></iframe>
-    <iframe src="project6.html"></iframe>
+
+    <!-- 1. Nhúng Trang chủ Portfolio của bạn -->
+    <iframe class="page-frame" src="index.html"></iframe>
+
+    <!-- 2. Nhúng Trang bài tập 6 -->
+    <iframe class="page-frame" src="project1.html"></iframe>
+    <iframe class="page-frame" src="project2.html"></iframe>
+    <iframe class="page-frame" src="project3.html"></iframe>
+    <iframe class="page-frame" src="project4.html"></iframe>
+    <iframe class="page-frame" src="project5.html"></iframe>
+    <iframe class="page-frame" src="project6.html"></iframe>
+
+    <!-- 3. Nhúng Trang bài tập hoặc dự án khác (Nếu có, bạn cứ copy thêm dòng dưới) -->
+    <!-- <iframe class="page-frame" src="baitap7.html"></iframe> -->
+
 </body>
 </html>
